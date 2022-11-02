@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // Algo:----
+    // find the occurence of  character in the string.
+    // split string in array.if trying with reduce b/c reduce is an array method.
+    // create blank obj.
+    // iterate a loop on the string.
+    // make a condition using hasown to check whether the key is in the object or not .
+    //if it is in the object do increment . else give it value one.
+
+    const str = "vaishali";
+    let splitStr = str.split("");
+    const objb = {};
+    for (var i = 0; i < splitStr.length; i++) {
+      //   if (objb.hasOwnProperty(splitStr[i])) {
+      //     objb[splitStr[i]]++;
+      //   } else {
+      //     objb[splitStr[i]] = 1;
+      //   }
+      objb.hasOwnProperty(splitStr[i])
+        ? objb[splitStr[i]]++
+        : (objb[splitStr[i]] = 1);
+    }
+    console.log("1stway", objb);
+
+    //-----------------------using function----------------------
+    function findOccurence(str) {
+      const objb = {};
+      for (var i = 0; i < str.length; i++) {
+        //     if (objb.hasOwnProperty(str[i])) {
+        //       objb[str[i]]++;
+        //     } else {
+        //       objb[str[i]] = 1;
+        //     }
+        //   }
+        //   return objb;
+        objb.hasOwnProperty(str[i]) ? objb[str[i]]++ : (objb[str[i]] = 1);
+      }
+      return objb;
+    }
+    console.log("2nd way", findOccurence("vaishali"));
+
+    //--------------------using reduce------------------------
+    let splitStrs = str.split("");
+    const newstr = splitStrs.reduce((acc, current) => {
+      if (acc.hasOwnProperty(current)) {
+        acc[current]++;
+      } else {
+        acc[current] = 1;
+      }
+      return acc;
+    }, {});
+    console.log("3rd way", newstr);
+  </script>
+</html>
